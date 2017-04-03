@@ -24,7 +24,7 @@ child_8.taxon = taxon_namespace.get_taxon("E")
 child_9.taxon = taxon_namespace.get_taxon("F")
 
 print(tree_1.as_string("newick"))
-tree_1.print_plot()
+tree_1.print_plot() #sggsaj
 
 tree_2 = dendropy.Tree(tree_1,taxon_namespace = taxon_namespace)
 ##child_1 = tree_2.seed_node.new_child(edge_length = 1)
