@@ -33,5 +33,9 @@ evolution(child22)
 
 #print node1.value
 
+#poisson process
+
+#simple probablistic model
+
 
 tree1.print_plot()
