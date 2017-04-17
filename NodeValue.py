@@ -23,21 +23,21 @@ def process_node(node, start=1.0):
 
 ##The following method assigns discrete attributes to the nodes of the tree. There are two possible attributes, 0 and 1.
 ##The probability of an attribute being 0 is 68% and the same being 1 is 32%. Similar to the process_node() function,
-##this function assigns values to the nodes using the gaussian distribution, where the mean is the value of the parent node and the
-##standard deviation is the length of the edge of the node. The values of the node, in turn, determine the attributes of the node.
-def process_node_discrete(node, start=1.0):
+##this function assigns attributes to the nodes using the gaussian distribution, where the mean is the attribute of
+##the parent node and the standard deviation is the length of the edge of the node. 
+def process_node_discrete(node, start=0):
     if node.parent_node is None:
-        node.value = start
+        node.attribute = start
     else:
 ##        The random.gauss function takes the mean to be the value of the parent node and the standard deviation
 ##        to be the edge length of the node. In a standard gaussian distribution, 68% of the data lies between a
 ##        standard deviation of the mean.
-        node.value = random.gauss(int(node.parent_node.value), int(node.edge.length))
-        lower = node.parent_node.value - node.edge.length
-        upper = node.parent_node.value + node.edge.length
-##        There is 68% probablity that the value lies inside the lower and the upper value range. Therfore, the
+        node.attribute = random.gauss(int(node.parent_node.attribute), int(node.edge.length))
+        lower = node.parent_node.attribute - node.edge.length
+        upper = node.parent_node.attribute + node.edge.length
+##        There is 68% probablity that the attribute lies inside the lower and the upper value range. Therfore, the
 ##        probablity of node.attribute being 1 is 32% and the same being 0 is 68%
-        if node.value >= upper or node.value <= lower:
+        if node.attribute >= upper or node.attribute <= lower:
             node.attribute = 1
         else:
             node.attribute = 0
