@@ -1,5 +1,12 @@
 import dendropy
 
+"""
+The following code creates a tree with 100 nodes
+
+The branches are numbered 0=9 and each of the leaves are numbered by the edge node number followed by a number between 0-9
+
+"""
+
 BigTree = dendropy.Tree()
 
 count = 0

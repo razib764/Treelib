@@ -1,4 +1,10 @@
-import dendropy 
+import dendropy
+
+"""
+The following code creates two trees: tree_1 and tree_2 that have 9 nodes each.
+The leaf nodes are labelled alphabetically
+The print_plot() command prints the map of the trees
+"""
 
 taxon_namespace = dendropy.TaxonNamespace(["A","B","C","D","E","F"])
 
@@ -50,4 +56,7 @@ child_9.taxon = taxon_namespace.get_taxon("F")
 print(tree_2.as_string("newick"))
 tree_2.print_plot()
 
+"""
+The following code which tries to test the equality of the trees does not work
+"""s
 print(tree_1.preorder_node_iter() == tree_2.preorder_node_iter())
