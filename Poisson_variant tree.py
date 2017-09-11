@@ -30,7 +30,8 @@ def ptree(l,limit,limit_type):
 
     if limit_type == 'l':
         
-        while length <= limit:
+        while length < limit:
+            
             """
             Generating a probability of arrival.
             We are incrementing the length by 1, so the formula reduces to:
@@ -39,19 +40,19 @@ def ptree(l,limit,limit_type):
             """
             prob = exp(-l)
             rando = random.random()
-
             """
             The seed node has different functions for adding chidlren,
             so, the first split is separated from the other
             """
             if split == 0:
                 """
-                If the randomly created number is les that the probability of no splitting (prob),
+                If the randomly created number is greater than that the probability of no splitting (prob),
                 the node will split and so, two new children are added
                 and the 'split' variable is incremented
                 The new nodes are node1 and node2, but only node1 splits further
                 """
-                if rando < prob:
+                if rando >= prob:
+                    
                     node1 = poisson_tree.seed_node.new_child()
                     node2 = poisson_tree.seed_node.new_child()
                     split += 1
@@ -60,7 +61,7 @@ def ptree(l,limit,limit_type):
                 Similarly, for the nodes other than the seed, the splitting occurs as
                 child1 and child2 ad child1 becomes the new node1 for the next iteration
                 """
-                if rando < prob: 
+                if rando >= prob: 
                     child1 = dendropy.Node()
                     child2 = dendropy.Node()
                     node1.add_child(child1)
@@ -69,7 +70,7 @@ def ptree(l,limit,limit_type):
                     node1 = child1
 
             length += 1
- #       poisson_tree.print_plot()
+        poisson_tree.print_plot()
         return split
     
     elif limit_type == 'n':
@@ -79,7 +80,7 @@ def ptree(l,limit,limit_type):
         (quatified by the value of 'split') as an upper limit
         """
             
-        while split <= limit:
+        while split < limit:
             prob = exp(-l)
             rando = random.random()
             if split == 0:
@@ -97,11 +98,11 @@ def ptree(l,limit,limit_type):
                     node1 = child1
 
             length += 1
-#        poisson_tree.print_plot()
+        poisson_tree.print_plot()
         return length
 
 "Generating graphs of the functions"
-
+"""
 import matplotlib.pyplot as plt
 import numpy
 import matplotlib.mlab
@@ -127,8 +128,9 @@ while count <= 10000:
 plt.hist(listl1)
 plt.hist(listl2)
 plt.hist(listl3)
+
 plt.hist(listn1)
 plt.hist(listn2)
 plt.hist(listn3)
-
+"""
     
