@@ -69,7 +69,7 @@ def ptree(l,limit,limit_type):
                     node1 = child1
 
             length += 1
-        poisson_tree.print_plot()
+ #       poisson_tree.print_plot()
         return split
     
     elif limit_type == 'n':
@@ -97,5 +97,38 @@ def ptree(l,limit,limit_type):
                     node1 = child1
 
             length += 1
-        poisson_tree.print_plot()
+#        poisson_tree.print_plot()
         return length
+
+"Generating graphs of the functions"
+
+import matplotlib.pyplot as plt
+import numpy
+import matplotlib.mlab
+import random
+
+listl1= [] #list of number of nodes with limits on length and lambda 1
+listl2= [] #list of number of nodes with limits on length and lambda 2
+listl3= [] #list of number of nodes with limits on length and lambda 3
+listn1 = [] #list of total length of edges with limits on number of nodes and lambda 1
+listn2 = [] #list of total length of edges with limits on number of nodes and lambda 2
+listn3 = [] #list of total length of edges with limits on number of nodes and lambda 3
+
+count = 0
+while count <= 10000:
+    listl1 += [ptree(1,100,'l')]
+    listl2 += [ptree(2,100,'l')]
+    listl3 += [ptree(3,100,'l')]
+    listn1 += [ptree(1,100,'n')]
+    listn2 += [ptree(2,100,'n')]
+    listn3 += [ptree(3,100,'n')]
+    count += 1
+#plotting histograms
+plt.hist(listl1)
+plt.hist(listl2)
+plt.hist(listl3)
+plt.hist(listn1)
+plt.hist(listn2)
+plt.hist(listn3)
+
+    
