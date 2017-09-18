@@ -1,27 +1,41 @@
+
 import dendropy
+
 new_tree = dendropy.Tree()
 edge = new_tree.seed_node.new_child()
-#length_limit = int(input("Enter length limit here: "))
+limit = 30
+
+"""
+The following sunction will recursively split the edges of the tree into two edges.
+Each edge is of length 3.
+The recursion stops when the total length of the tree reaches a certain limit.
+Base case of the recursion is when the tree reaches the length limit in the first split.
+"""
 
 def split(edge):
-    """
-    This is an attempt at a recursive function that splits edges.
-    The function is incomplete because it does not work for more than two cycles
-    """
+    
     edge.edge.length = 3 #length of the first edge
+    
     #the following two lines adds two children to the node at the edge
     #this is the splitting
     edge1 = edge.new_child() 
     edge2 = edge.new_child()
-
-    total_length = edge.distance_from_root() #would be the limiting factor
     
-    while total_length < 6: #length of 6 is only 2 iterations
+    total_length = edge.distance_from_root() #would be the limiting factor
+
+    if total_length >= limit: #base case
+        return 'done'  
+        
+    else: #recursion with the child nodes of the parent edges
         split(edge1)
         split(edge2)
-        total_length = edge1.distance_from_root()
-        print (total_length)
+        return 'done'
 
-    new_tree.print_plot()    
+
+split(edge)
+new_tree.print_plot()
+
+    
+  
     
     
