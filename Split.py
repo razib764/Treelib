@@ -3,7 +3,7 @@ import dendropy
 
 new_tree = dendropy.Tree()
 edge = new_tree.seed_node.new_child()
-limit = 30
+limit = 20
 
 """
 The following sunction will recursively split the edges of the tree into two edges.
