@@ -47,7 +47,7 @@ def split(species_list):
     print ("Speciation has occured")
 
     total_length = species.distance_from_root()
-    print("New length od the branches will be: " + str(total_length))
+    print("New length of the branches will be: " + str(total_length))
 
     """
     In the following step, the list of species is updated.
