@@ -26,7 +26,7 @@ split is a recursive funtion that:
 
 def split(species_list):
 
-    speciation = random.random()
+    speciation = 1.0 #random.random()
     print ("Speciation will occur at a rate of: " + str(speciation))
     
     species = species_list[random.randint(0,len(species_list)-1)]
@@ -74,3 +74,4 @@ def split(species_list):
 
 split(species_list)
 maintree.print_plot()
+print(maintree.as_string(schema="newick"))
