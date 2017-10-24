@@ -23,9 +23,8 @@ def uniform_pure_birth_tree(limit,birth_rate=speciation, rng=None):
     tree.seed_node.edge.length = 0.0
     leaf_nodes = tree.leaf_nodes()
     total_length = 0.0
-    limit = 100
     while total_length< limit: 
-        waiting_time = rng.expovariate(len(leaf_nodes)/birth_rate)
+        waiting_time = rng.expovariate(len(leaf_nodes)*birth_rate)
         for nd in leaf_nodes:
             nd.edge.length += waiting_time
         parent_node = rng.choice(leaf_nodes)
