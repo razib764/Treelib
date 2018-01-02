@@ -38,7 +38,7 @@ def length_graph():
        length += [t.length()]
        rate += [birth_rate]
        birth_rate += 0.1
-    df = pd.DataFrame(rate,length, columns=["Birth Rate"])
+    df = pd.DataFrame(rate,length, columns=["Length"])
     df.plot()
 
     
