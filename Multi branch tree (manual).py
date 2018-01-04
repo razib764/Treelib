@@ -58,5 +58,5 @@ tree_2.print_plot()
 
 """
 The following code which tries to test the equality of the trees does not work
-"""s
+"""
 print(tree_1.preorder_node_iter() == tree_2.preorder_node_iter())
