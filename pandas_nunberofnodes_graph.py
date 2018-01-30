@@ -19,7 +19,7 @@ def uniform_pure_birth_tree(birth_rate, rng=None):
         c2 = parent_node.new_child()
         c1.edge.length = 0.0
         c2.edge.length = 0.0
-        total_length = c1.distance_from_root()
+        total_length += waiting_time
         leaf_nodes = tree.leaf_nodes()
     leaf_nodes = tree.leaf_nodes()
     waiting_time = rng.expovariate(len(leaf_nodes)*birth_rate)
@@ -28,19 +28,20 @@ def uniform_pure_birth_tree(birth_rate, rng=None):
     tree.is_rooted = True
     return tree
 
-uniform_pure_birth_tree(0.001).print_plot()
 
+dendropy.model.birthdeath.birth_death_tree(1,0.1,max_time=5).print_plot()
 
+"""
 def main():
-    birth_rate = 0.01
+    birth_rate = 0.00001
     nodes = []
     rate = []
-    while birth_rate < 0.1:
-       t = uniform_pure_birth_tree(birth_rate)
+    while birth_rate < 1:
+       t = uniform_pure_birth_tree(birth_rate) #this is taking too long 
        nodes += [len(t.leaf_nodes())]
        rate += [birth_rate]
-       birth_rate += 0.01
+       birth_rate += 0.00001
     df = pd.DataFrame(nodes,rate)
     print(df)
-    df.plot() 
+    df.plot() """
     
