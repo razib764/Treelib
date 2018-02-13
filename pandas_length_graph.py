@@ -1,7 +1,5 @@
-import pandas as pd
 import dendropy
 from dendropy.utility import GLOBAL_RNG
-import math
 import matplotlib.pyplot as plt
 
 tree = dendropy.Tree()
@@ -34,21 +32,16 @@ def uniform_pure_birth_tree(birth_rate,rng=None):
 
 
 def main():
-    birth_rate = 0.01
+    birth_rate = 0.1
     length = []
     rate = []
     while birth_rate <= 1:
-       '''for i in range(1,10):
-           rate_length = []
-           t = uniform_pure_birth_tree(birth_rate)
-           rate_length += [t.length()]'''
        t = uniform_pure_birth_tree(birth_rate)    
-       length += [math.log(t.length())]
-       #length += [math.log(sum(rate_length)/float(len(rate_length)))]
-       rate += [birth_rate]    
+       length += [(t.length())]
+       rate += [1/birth_rate]    
        birth_rate += 0.1
     plt.plot(rate, length, 'b-')
-    plt.axis([0.0,1.01, 4,10])
+    plt.axis([0.0,15, 0,2000])
     plt.show()
 
 main()    

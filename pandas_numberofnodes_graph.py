@@ -1,6 +1,6 @@
-import pandas as pd
 import dendropy
 from dendropy.utility import GLOBAL_RNG
+import matplotlib.pyplot as plt
 
 def uniform_pure_birth_tree(birth_rate, rng=None):
     "Generates a uniform-rate pure-birth process tree. "
@@ -10,7 +10,7 @@ def uniform_pure_birth_tree(birth_rate, rng=None):
     tree.seed_node.edge.length = 0.0
     leaf_nodes = tree.leaf_nodes()
     total_length = 0.0
-    while total_length < 100.0: 
+    while total_length < 10.0: 
         waiting_time = rng.expovariate(len(leaf_nodes)*birth_rate)
         for nd in leaf_nodes:
             nd.edge.length += waiting_time
@@ -22,26 +22,23 @@ def uniform_pure_birth_tree(birth_rate, rng=None):
         total_length += waiting_time
         leaf_nodes = tree.leaf_nodes()
     leaf_nodes = tree.leaf_nodes()
-    waiting_time = rng.expovariate(len(leaf_nodes)*birth_rate)
+    waiting_time += rng.expovariate(len(leaf_nodes)*birth_rate)
     for nd in leaf_nodes:
         nd.edge.length += waiting_time
     tree.is_rooted = True
     return tree
 
-
-dendropy.model.birthdeath.birth_death_tree(1,0.1,max_time=5).print_plot()
-
-"""
 def main():
-    birth_rate = 0.00001
+    birth_rate = 0.0001
     nodes = []
     rate = []
-    while birth_rate < 1:
-       t = uniform_pure_birth_tree(birth_rate) #this is taking too long 
+    while birth_rate < 0.01:
+       t = uniform_pure_birth_tree(birth_rate)    
        nodes += [len(t.leaf_nodes())]
        rate += [birth_rate]
-       birth_rate += 0.00001
-    df = pd.DataFrame(nodes,rate)
-    print(df)
-    df.plot() """
+       birth_rate += 0.0001
+    plt.plot(rate, nodes, 'b-')
+    plt.axis([0.0,0.01, 1,4])
+    plt.show()
     
+main()

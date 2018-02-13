@@ -21,3 +21,5 @@ def ratio_test():
     df = pd.DataFrame(nodes,length, columns=["Length"])
     df.plot()
     
+#change one of the parameters 
+#keep the differnce constant
