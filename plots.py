@@ -14,6 +14,8 @@ def node_graph():
            t = dendropy.model.birthdeath.birth_death_tree(birth_rate,0.0,max_time=5)
            length_avg += len(t.leaf_nodes())
            i += 1
+       #t = dendropy.model.birthdeath.birth_death_tree(birth_rate,0.0,max_time=5)
+       #nodes += [len(t.leaf_nodes())]
        nodes += [math.log(length_avg/100)]
        rate += [birth_rate]
        birth_rate += 0.01
@@ -24,18 +26,18 @@ def node_graph():
 
 
 def len_graph():
-    birth_rate = 0.1
+    birth_rate = 0.01
     length = []
     rate = []
     while birth_rate <= 1:
        t = dendropy.model.birthdeath.birth_death_tree(birth_rate,0.0,num_total_tips=100) 
        length += [(t.length())]
-       rate += [birth_rate]    
-       birth_rate += 0.1
+       rate += [1/birth_rate]    
+       birth_rate += 0.01
     plt.plot(rate, length, 'b-')
-    plt.axis([0.0,1.1, 0,2000])
+    plt.axis([0,101, 0,15000])
     plt.show()
     
     
-node_graph()
-#len_graph()
+#node_graph()
+len_graph()

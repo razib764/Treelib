@@ -11,3 +11,7 @@ ts.show_branch_length = True
 ts.show_branch_support = True
 t.render("mytree.png")
 print('done')
+
+#boxplots, visualization, expected graphs
+#store the data seperately
+#expected variance in tree size
