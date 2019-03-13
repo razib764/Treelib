@@ -1,13 +1,5 @@
 import dendropy
-import sys
-import math
-import collections
-import itertools
-from dendropy.calculate import probability
 from dendropy.utility import GLOBAL_RNG
-from dendropy.utility.error import TreeSimTotalExtinctionException
-from dendropy.utility import constants
-import random
 
 def uniform_pure_birth_tree(birth_rate,rng=None):
     "Generates a uniform-rate pure-birth process tree. "

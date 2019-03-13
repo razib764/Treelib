@@ -23,5 +23,6 @@ while count < 10:
         node.add_child(child)
         count1 += 1        
     count += 1
+print(BigTree.as_string(schema = "newick"))
 BigTree.print_plot()
         
